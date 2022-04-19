@@ -8,4 +8,6 @@ class NullPiece < Piece
         @symbol = symbol
         @moves = moves
     end
+
+    
 end

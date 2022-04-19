@@ -1,17 +1,38 @@
+require 'byebug'
+require_relative 'pipefile'
+
 class Board
 
     attr_accessor :grid
 
     def initialize
         @grid = Array.new(8) { Array.new(8, nil) }
-        Board.populate
+        populate
     end
 
-    def self.populate
-        array = [ :R, :N, :B, :Q, :K, :B, :N, :R]
-        (0...8).each do |piece|
-            ele.new()
+    def populate
+        # debugger
+        array = [ Rook, Knight, Bishop, Queen, King, Bishop, Knight, Rook]
+        pawn_rows = [1, 6]
+
+        array.each_with_index do |piece, i|
+            @grid[0][i] = piece.new("black", self, [0, i])
         end
+
+        array.each_with_index do |piece, i|
+            @grid[7][i] = piece.new("white", self, [7, i])
+        end
+
+        pawn_rows.each do |row|
+            (0..7).each do |col|
+                if row == 1
+                    @grid[row][col] = Pawn.new("black", self, [row,col])
+                else
+                    @grid[row][col] = Pawn.new("white", self, [row,col])
+                end
+            end
+        end
+        
     end
 
     def [](pos)
@@ -27,11 +48,33 @@ class Board
     def move_piece(start_pos, end_pos)
         raise 'no piece at starting position' if self[start_pos] == nil
         raise 'cannot move to end_pos' if #how to find out if piece can move there
-        self[start_pos] = nil
-        self[end_pos] = #how to get access to piece to move it
+        
+        self[end_pos] = self[start_pos]
+        self[start_pos] = nil #remember to change to nullpiece
     end
+
+    def render
+        @grid.each do |row|
+            colors = row.map do |piece|
+                if piece.nil?
+                    :X
+                else
+                    if piece.color == "black"
+                        piece.symbol.to_s.blue
+                    else
+                        piece.symbol.to_s.red
+                    end
+                end
+            end
+            puts colors.join(' ')
+        end
+    end
+
+  
 end
 
-# b = Board.new
-# b.grid
+b = Board.new
+# p b.grid
+p b.render
+p b.render
 
