@@ -47,14 +47,14 @@ class Board
 
     def move_piece(start_pos, end_pos)
         raise 'no piece at starting position' if self[start_pos] == nil
-        raise 'cannot move to end_pos' if #how to find out if piece can move there
+        # raise 'cannot move to end_pos' if #how to find out if piece can move there
         
         self[end_pos] = self[start_pos]
         self[start_pos] = nil #remember to change to nullpiece
     end
 
     def render
-        @grid.each do |row|
+        printed_board = @grid.map do |row|
             colors = row.map do |piece|
                 if piece.nil?
                     :X
@@ -68,6 +68,7 @@ class Board
             end
             puts colors.join(' ')
         end
+        printed_board
     end
 
   
@@ -76,5 +77,8 @@ end
 b = Board.new
 # p b.grid
 p b.render
+
+b.move_piece([6,0], [4,0])
+
 p b.render
 

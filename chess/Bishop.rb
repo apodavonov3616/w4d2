@@ -10,4 +10,5 @@ class Bishop < Piece
     def symbol
         return :B
     end
+
 end
