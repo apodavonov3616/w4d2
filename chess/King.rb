@@ -13,7 +13,7 @@ class King < Piece
         return :K
     end
 
-    # def move_dirs
-    #     return KING_MOVES
-    # end
+    def move_dirs
+        return KING_MOVES
+    end
 end
