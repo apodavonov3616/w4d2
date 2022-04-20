@@ -22,15 +22,15 @@ class Board
             @grid[7][i] = piece.new("white", self, [7, i])
         end
 
-        # pawn_rows.each do |row|
-        #     (0..7).each do |col|
-        #         if row == 1
-        #             @grid[row][col] = Pawn.new("black", self, [row,col])
-        #         else
-        #             @grid[row][col] = Pawn.new("white", self, [row,col])
-        #         end
-        #     end
-        # end
+        pawn_rows.each do |row|
+            (0..7).each do |col|
+                if row == 1
+                    @grid[row][col] = Pawn.new("black", self, [row,col])
+                else
+                    @grid[row][col] = Pawn.new("white", self, [row,col])
+                end
+            end
+        end
         
     end
 
