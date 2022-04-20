@@ -1,6 +1,7 @@
 require_relative "Piece"
 
 class Knight < Piece
+    include Stepable
 
     attr_reader :symbol
 
@@ -10,5 +11,9 @@ class Knight < Piece
 
     def symbol
         return :N
+    end
+
+    def move_dirs
+        return KNIGHT_MOVES
     end
 end

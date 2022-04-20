@@ -11,8 +11,7 @@ class Board
     end
 
     def populate
-        # debugger
-        array = [ Rook, Knight, Bishop, Queen, King, Bishop, Knight, Rook]
+        array = [Rook, Knight, Bishop, Queen, King, Bishop, Knight, Rook]
         pawn_rows = [1, 6]
 
         array.each_with_index do |piece, i|
@@ -23,15 +22,15 @@ class Board
             @grid[7][i] = piece.new("white", self, [7, i])
         end
 
-        pawn_rows.each do |row|
-            (0..7).each do |col|
-                if row == 1
-                    @grid[row][col] = Pawn.new("black", self, [row,col])
-                else
-                    @grid[row][col] = Pawn.new("white", self, [row,col])
-                end
-            end
-        end
+        # pawn_rows.each do |row|
+        #     (0..7).each do |col|
+        #         if row == 1
+        #             @grid[row][col] = Pawn.new("black", self, [row,col])
+        #         else
+        #             @grid[row][col] = Pawn.new("white", self, [row,col])
+        #         end
+        #     end
+        # end
         
     end
 
@@ -70,15 +69,13 @@ class Board
         end
         printed_board
     end
-
-  
 end
 
-b = Board.new
-# p b.grid
-p b.render
+# b = Board.new
+# # p b.grid
+# p b.render
 
-b.move_piece([6,0], [4,0])
+# b.move_piece([6,0], [4,0])
 
-p b.render
+# p b.render
 

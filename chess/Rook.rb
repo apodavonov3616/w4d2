@@ -13,28 +13,6 @@ class Rook < Piece
         return :R
     end
 
-    def moves(pos)
-        row, col = pos
-        # up = [-1,0]
-        # down = [1,0]
-        # right = [0,1]
-        # left = [0,-1]
-        
-        deltas = [-1,0,1]
-
-        next_positions = []
-
-        deltas.each do |i|
-            deltas.each do |j|
-                if i.abs != j.abs
-                    next_positions << [row+i, col+j]
-                end
-            end
-        end
-
-        next_positions
-    end
-
     def move_dirs
         return CARDINAL_DIR
     end
