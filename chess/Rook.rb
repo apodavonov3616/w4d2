@@ -1,6 +1,7 @@
 require_relative "Piece"
 
 class Rook < Piece
+    include Slideable
 
     attr_reader :symbol
 
@@ -32,5 +33,9 @@ class Rook < Piece
         end
 
         next_positions
+    end
+
+    def move_dirs
+        return CARDINAL_DIR
     end
 end

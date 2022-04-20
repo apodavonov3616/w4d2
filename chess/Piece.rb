@@ -1,8 +1,9 @@
 require 'colorize'
+require 'Sliding_pieces'
 
 class Piece
 
-    attr_reader :color
+    attr_reader :color, :pos
 
     def initialize(color, board, pos)
         @color = color
